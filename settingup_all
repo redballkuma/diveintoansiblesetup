@@ -1,0 +1,21 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt install sshpass
+
+ssh-keygen
+
+echo password > password.txt
+
+
+do 
+  for os in ubuntu centos
+  do
+    for instance in 1 2 3
+    do 
+      sshpass -f ppassword.txt ssh-copy-id -o StrictHostKeyChecking=no ${user}@${os}${instance}
+    done
+  done
+done
+
+
